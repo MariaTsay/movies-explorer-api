@@ -2,21 +2,16 @@
 Дипломный проект по курсу Web-разработчик от Яндекс.Практикум. 
 
 В дипломном проекте настроены следующие роуты:
-# возвращает информацию о пользователе (email и имя)
-GET /users/me
 
-# обновляет информацию о пользователе (email и имя)
-PATCH /users/me
+*GET /users/me - возвращает информацию о пользователе (email и имя)
 
-# возвращает все сохранённые текущим  пользователем фильмы
-GET /movies
+*PATCH /users/me - обновляет информацию о пользователе (email и имя)
 
-# создаёт фильм с переданными в теле
-# country, director, duration, year, description, image, trailer, nameRU, nameEN и thumbnail, movieId 
-POST /movies
+*GET /movies - возвращает все сохранённые текущим  пользователем фильмы
 
-# удаляет сохранённый фильм по id
-DELETE /movies/_id
+*POST /movies - создаёт фильм с переданными в теле country, director, duration, year, description, image, trailer, nameRU, nameEN и thumbnail, movieId 
+
+*DELETE /movies/_id - удаляет сохранённый фильм по id
 
 ## Технологии
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
