@@ -9,9 +9,9 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors = require('./middlewares/cors');
 const serverError = require('./middlewares/serverError');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 mongoose
-  .connect('mongodb://127.0.0.1:27017/bitfilmsdb')
+  .connect(DB_URL)
   .then(() => {
     console.log('connect');
   })
