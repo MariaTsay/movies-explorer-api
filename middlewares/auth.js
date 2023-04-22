@@ -3,10 +3,7 @@ const Unauthtorized = require('../errors/Unauthtorized');
 
 const { JWT_SECRET = 'some-secret-key' } = process.env;
 
-// eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
-  let payload;
-
   try {
     const { authorization } = req.headers;
 
@@ -15,11 +12,9 @@ module.exports = (req, res, next) => {
     }
     const token = authorization.replace('Bearer ', '');
 
-    payload = jwt.verify(token, JWT_SECRET);
+    req.user = jwt.verify(token, JWT_SECRET);
+    next();
   } catch (err) {
-    return next(new Unauthtorized('Необходима авторизация'));
+    next(new Unauthtorized('Необходима авторизация'));
   }
-
-  req.user = payload;
-  next();
 };
