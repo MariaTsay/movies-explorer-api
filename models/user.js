@@ -30,8 +30,6 @@ userSchema.methods.toJSON = function () {
   const data = this.toObject();
 
   delete data.password;
-  // eslint-disable-next-line no-underscore-dangle
-  delete data.__v;
 
   return data;
 };
