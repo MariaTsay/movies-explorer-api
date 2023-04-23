@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { CRASH_SERVER } = require('../utils/constants');
 
 const {
   login, createUser,
@@ -10,7 +11,7 @@ const {
 
 router.get('/crash-test', () => {
   setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
+    throw new Error(CRASH_SERVER);
   }, 0);
 });
 
