@@ -1,4 +1,4 @@
-const ERROR_500_MESSAGE = require('../utils/constants');
+const { ERROR_500_MESSAGE } = require('../utils/constants');
 
 const serverError = (err, req, res, next) => {
   // если у ошибки нет статуса, выставляем 500

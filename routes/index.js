@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const auth = require('../middlewares/auth');
 const NotFound = require('../errors/NotFound');
-const ERROR_404_MESSAGE = require('../utils/constants');
+const { ERROR_404_MESSAGE } = require('../utils/constants');
 
 const userRouter = require('./users');
 const movieRouter = require('./movies');

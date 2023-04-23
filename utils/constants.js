@@ -6,7 +6,6 @@ const ERROR_404_MESSAGE_MOVIE = 'Фильм с указанным  _id не на
 const ERROR_404_MESSAGE_USER = 'Пользователь с указанным _id не найден';
 const ERROR_409_MESSAGE_USER = 'Такой пользователь уже есть';
 const ERROR_500_MESSAGE = 'На сервере произошла ошибка';
-const REMOVE_200_MESSAGE_MOVIE = 'Фильм удален';
 
 module.exports = {
   ERROR_400_MESSAGE,
@@ -17,5 +16,4 @@ module.exports = {
   ERROR_404_MESSAGE_USER,
   ERROR_409_MESSAGE_USER,
   ERROR_500_MESSAGE,
-  REMOVE_200_MESSAGE_MOVIE,
 };

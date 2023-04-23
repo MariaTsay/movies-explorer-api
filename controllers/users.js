@@ -37,7 +37,9 @@ module.exports.updateUser = (req, res, next) => {
     })
     .then((updatedUser) => res.status(200).send(updatedUser))
     .catch((err) => {
-      if (err instanceof mongoose.Error.ValidationError) {
+      if (err.code === 11000) {
+        next(new Conflict(ERROR_409_MESSAGE_USER));
+      } else if (err.name === 'ValidationError') {
         next(new BadRequest(ERROR_400_MESSAGE));
       } else {
         next(err);

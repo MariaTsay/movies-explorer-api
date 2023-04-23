@@ -23,12 +23,14 @@ mongoose
 
 const app = express();
 
-app.use(limiter); // подключаем rate-limiter
-app.use(helmet());
 app.use(express.json());
 
-app.use(requestLogger); // подключаем логгер запросов
 app.use(cors);
+
+app.use(requestLogger); // подключаем логгер запросов
+
+app.use(limiter); // подключаем rate-limiter
+app.use(helmet());
 
 app.use('/', router);
 
