@@ -6,18 +6,23 @@ const NotFound = require('../errors/NotFound');
 const BadRequest = require('../errors/BadRequest');
 const Conflict = require('../errors/Conflict');
 const User = require('../models/user');
+const {
+  ERROR_400_MESSAGE,
+  ERROR_404_MESSAGE_USER,
+  ERROR_409_MESSAGE_USER,
+} = require('../utils/constants');
 
 const { JWT_SECRET = 'some-secret-key' } = process.env;
 
 module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .orFail(() => {
-      throw new NotFound('Пользователь с указанным _id не найден');
+      throw new NotFound(ERROR_404_MESSAGE_USER);
     })
     .then((user) => res.status(200).send(user))
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequest('Переданы некорректные данные'));
+        next(new BadRequest(ERROR_400_MESSAGE));
       } else {
         next(err);
       }
@@ -28,12 +33,12 @@ module.exports.updateUser = (req, res, next) => {
   const { name, email } = req.body;
   User.findByIdAndUpdate(req.user._id, { name, email }, { new: true, runValidators: true })
     .orFail(() => {
-      throw new NotFound('Пользователь с указанным _id не найден');
+      throw new NotFound(ERROR_404_MESSAGE_USER);
     })
     .then((updatedUser) => res.status(200).send(updatedUser))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
-        next(new BadRequest('Переданы некорректные данные пользователя'));
+        next(new BadRequest(ERROR_400_MESSAGE));
       } else {
         next(err);
       }
@@ -52,9 +57,9 @@ module.exports.createUser = (req, res, next) => {
     .then((newUser) => res.status(200).send({ data: newUser }))
     .catch((err) => {
       if (err.code === 11000) {
-        next(new Conflict('Такой пользователь уже есть'));
+        next(new Conflict(ERROR_409_MESSAGE_USER));
       } else if (err instanceof mongoose.Error.ValidationError) {
-        next(new BadRequest('Переданы некорректные данные пользователя'));
+        next(new BadRequest(ERROR_400_MESSAGE));
       } else {
         next(err);
       }

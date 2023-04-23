@@ -23,6 +23,6 @@
 
 ## Ссылки на проект
 
-IP 158.160.62.184
+IP 158.160.59.175
 
 Backend https://api.my-movies-explorer.nomoredomains.monster
