@@ -10,7 +10,6 @@ const INVALID_URL = 'Некорректная ссылка';
 const INVALID_EMAIL = 'Некорректный email';
 const INVALID_EMAIL_OR_PASSWORD = 'Неправильные почта или пароль';
 const CRASH_SERVER = 'Сервер сейчас упадёт';
-const DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb';
 
 module.exports = {
   ERROR_400_MESSAGE,
@@ -25,5 +24,4 @@ module.exports = {
   INVALID_EMAIL,
   INVALID_EMAIL_OR_PASSWORD,
   CRASH_SERVER,
-  DB_URL,
 };

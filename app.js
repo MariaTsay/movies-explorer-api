@@ -11,7 +11,7 @@ const cors = require('./middlewares/cors');
 const serverError = require('./middlewares/serverError');
 const limiter = require('./middlewares/rateLimit');
 
-const { PORT = 3000, DB_URL } = process.env;
+const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 mongoose
   .connect(DB_URL)
   .then(() => {
